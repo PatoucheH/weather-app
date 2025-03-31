@@ -1,10 +1,10 @@
+import { findlat, findlon } from "./utils-function.js";
 import {
   createDiv,
   displayWeatherDiv,
   createText,
-  findlat,
-  findlon,
-} from "./utils-function.js";
+  createGraph,
+} from "./create-function.js";
 
 /**
  *
@@ -34,11 +34,15 @@ export function fetchApi(city, apiKey) {
       );
     })
     .then((response) => response.json())
-    .then((infoWeather) => {
+    .then((infosWeather) => {
       displayWeatherDiv(
-        createDiv(createText(infoWeather), infoWeather.city.name)
+        createDiv(
+          createText(infosWeather),
+          createGraph(infosWeather),
+          infosWeather.city.name
+        )
       );
-      setStorage(infoWeather.city.name, infoWeather.city.name);
+      setStorage(infosWeather.city.name, infosWeather.city.name);
     })
     .catch((e) => console.error("Error : ", e));
 }

@@ -1,4 +1,3 @@
-// import "./style.scss";
 import { fetchApi, loadPage } from "./main-function.js";
 
 const myBtn = document.getElementById("my-btn");
