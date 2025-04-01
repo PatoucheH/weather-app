@@ -12,12 +12,12 @@ import { myPictureKey } from "./main.js";
  */
 export function fetchDisplayWeather(city, apiKey) {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=${apiKey}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=2&appid=${apiKey}`
   )
     .then((response) => response.json())
     .then((coord) => {
       return fetch(
-        `http://api.openweathermap.org/data/2.5/forecast?lat=${findlat(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${findlat(
           coord
         )}&lon=${findlon(coord)}&appid=${apiKey}`
       );
