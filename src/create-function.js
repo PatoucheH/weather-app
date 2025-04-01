@@ -8,7 +8,7 @@ import { Chart } from "chart.js/auto";
  */
 export function createText(infosWeather) {
   let text = document.createElement("div");
-  text.classList.add('container-day')
+  text.classList.add("container-day");
   const h2 = document.createElement("h2");
   h2.textContent = infosWeather.city.name;
   text.appendChild(h2);
@@ -61,7 +61,7 @@ export function createDiv(divToAdd, graph, key) {
   div.setAttribute("id", key);
   div.appendChild(divToAdd);
   const deleteBTn = document.createElement("img");
-  deleteBTn.setAttribute("src", "./public/croix.png");
+  deleteBTn.setAttribute("src", "./croix.png");
   deleteBTn.classList.add("delete-btn");
   deleteBTn.addEventListener("click", (e) => {
     const divContainer = document.querySelector(".container-weather");
