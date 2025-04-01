@@ -90,7 +90,7 @@ header {
 .weather-div {
   text-align: center;
   position: relative;
-  margin: 100px 50px;
+  margin: 100px 5px;
   color: #000;
   flex-direction: column;
   h2 {
@@ -112,12 +112,15 @@ header {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 400px 1fr;
     .weather:nth-of-type(1) {
+      font-size: 1.2rem;
       grid-column: 1 / -1;
       grid-row: 1 / 2;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
       align-items: center;
+      font-weight: 900;
+
       h3 {
         position: absolute;
         left: 50%;
@@ -146,7 +149,7 @@ header {
     .weather {
       flex-wrap: wrap;
       text-align: center;
-      margin: 10px 10px;
+      margin: 10px 3px;
       padding: 25px;
       border: 3px solid $primary-color;
       background: $second-color;
@@ -171,6 +174,14 @@ header {
   #weather-icon {
     width: 50px;
     height: 50px;
+  }
+
+  img {
+    width: 70%;
+  }
+
+  #city-img {
+    height: 250px;
   }
 }
 

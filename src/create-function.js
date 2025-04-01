@@ -82,8 +82,8 @@ export function createDiv(divToAdd, graph, key) {
 export function createGraph(infosWeather) {
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
-  canvas.width = 400;
-  canvas.height = 200;
+  canvas.width = 700;
+  canvas.height = 350;
   let arrayTemp = [];
   let arrayLabels = [];
   for (let i = 0; i < infosWeather.list.length; i++) {
