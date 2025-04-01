@@ -64,11 +64,9 @@ header {
 }
 
 .container-weather {
-  margin: 50px auto;
-}
-.container-weather .div-img {
-  width: 200px;
-  height: 100px;
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .weather-div {
@@ -89,20 +87,56 @@ header {
 .weather-div h3 {
   text-decoration: underline;
 }
-.weather-div h4 {
-  margin: 10px;
+.weather-div .container-day {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 400px 1fr;
 }
-.weather-div .weather {
+.weather-div .container-day .weather:nth-of-type(1) {
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.weather-div .container-day .weather:nth-of-type(1) h3 {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+}
+.weather-div .container-day .weather:not(:nth-of-type(1)) {
+  font-size: 0.8rem;
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+}
+.weather-div .container-day .weather:nth-of-type(2) {
+  grid-column: 1/2;
+}
+.weather-div .container-day .weather:nth-of-type(3) {
+  grid-column: 2/3;
+}
+.weather-div .container-day .weather:nth-of-type(4) {
+  grid-column: 3/4;
+}
+.weather-div .container-day .weather:nth-of-type(5) {
+  grid-column: 4/5;
+}
+.weather-div .container-day .weather {
+  flex-wrap: wrap;
   text-align: center;
-  margin: 10px 0px;
+  margin: 10px 10px;
   padding: 25px;
   border: 3px solid #4a90e2;
   background: #ffc72c;
+  position: relative;
 }
-.weather-div .weather img {
+.weather-div .container-day p {
+  grid-row: 2/-1;
   margin-top: 10px;
-}
-.weather-div .weather p {
   white-space: pre;
 }
 .weather-div .delete-btn {

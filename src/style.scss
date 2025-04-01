@@ -82,11 +82,9 @@ header {
 // Weather
 
 .container-weather {
-  margin: 50px auto;
-  .div-img {
-    width: 200px;
-    height: 100px;
-  }
+  margin: 0px auto;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .weather-div {
@@ -108,18 +106,55 @@ header {
     text-decoration: underline;
   }
 
-  h4 {
-    margin: 10px;
-  }
-
-  .weather {
-    text-align: center;
-    margin: 10px 0px;
-    padding: 25px;
-    border: 3px solid $primary-color;
-    background: $second-color;
+  .container-day {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 400px 1fr;
+    .weather:nth-of-type(1) {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      h3 {
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .weather:not(:nth-of-type(1)) {
+      font-size: 0.8rem;
+      grid-row: 2/3;
+      display: flex;
+      flex-direction: column;
+    }
+    .weather:nth-of-type(2) {
+      grid-column: 1/ 2;
+    }
+    .weather:nth-of-type(3) {
+      grid-column: 2 / 3;
+    }
+    .weather:nth-of-type(4) {
+      grid-column: 3/ 4;
+    }
+    .weather:nth-of-type(5) {
+      grid-column: 4 /5;
+    }
+    .weather {
+      flex-wrap: wrap;
+      text-align: center;
+      margin: 10px 10px;
+      padding: 25px;
+      border: 3px solid $primary-color;
+      background: $second-color;
+      position: relative;
+    }
 
     p {
+      grid-row: 2 / -1;
       margin-top: 10px;
       white-space: pre;
     }
@@ -136,24 +171,6 @@ header {
   #weather-icon {
     width: 50px;
     height: 50px;
-  }
-}
-
-.container-day {
-  .weather {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 100px repeat(2, 1fr);
-  }
-  h3 {
-    position: absolute;
-    left: 50%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-  }
-  p {
-    grid-row: 2 / -1;
   }
 }
 
