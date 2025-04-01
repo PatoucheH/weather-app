@@ -8,6 +8,7 @@ import { Chart } from "chart.js/auto";
  */
 export function createText(infosWeather) {
   let text = document.createElement("div");
+  text.classList.add('container-day')
   const h2 = document.createElement("h2");
   h2.textContent = infosWeather.city.name;
   text.appendChild(h2);
@@ -20,28 +21,27 @@ export function createText(infosWeather) {
     let date = new Date(infosWeather.list[j * 8].dt * 1000);
     const h3 = document.createElement("h3");
     h3.textContent = date.toLocaleDateString();
-    const desc = document.createElement("h4");
-    desc.textContent = infosWeather.list[j * 8].weather[0].description;
-    const img = document.createElement("img");
-    img.setAttribute(
-      "src",
-      `https://openweathermap.org/img/wn/${
-        infosWeather.list[j * 8].weather[0].icon
-      }@2x.png`
-    );
 
     divByDate.appendChild(h3);
-    divByDate.appendChild(desc);
-    divByDate.appendChild(img);
     while (time !== "23:00:00") {
-      counter++;
       const divInfo = document.createElement("p");
       time = new Date(
         infosWeather.list[counter].dt * 1000
       ).toLocaleTimeString();
-      let info = Math.round(infosWeather.list[counter].main.temp - 273.15);
-      divInfo.textContent = `Temperature at ${time} : ${info} °C`;
+      let temp = Math.round(infosWeather.list[counter].main.temp - 273.15);
+      let humidity = Math.round(infosWeather.list[counter].main.humidity);
+      let pressure = infosWeather.list[counter].main.pressure;
+      let wind = infosWeather.list[counter].wind.speed;
+      const desc = document.createElement("p");
+      desc.textContent = infosWeather.list[counter].weather[0].description;
+      const img = document.createElement("img");
+      img.src = `https://openweathermap.org/img/wn/${infosWeather.list[counter].weather[0].icon}@2x.png`;
+      divInfo.textContent = `${time}\nTemperature : ${temp} °C \nHumidity : ${humidity} %\nPressure : ${pressure} Pa\nWind speed : ${wind} m/s`;
+      divInfo.appendChild(desc);
+      divInfo.appendChild(img);
       divByDate.appendChild(divInfo);
+
+      counter++;
     }
     text.appendChild(divByDate);
   }
@@ -76,17 +76,6 @@ export function createDiv(divToAdd, graph, key) {
 
 /**
  *
- * @param {div} div A div to display
- * display a div receive in parameter on the site
- */
-export function displayWeatherDiv(div) {
-  const divContainer = document.querySelector(".container-weather");
-  divContainer.appendChild(div);
-}
-
-
-/**
- * 
  * @param {obj} infosWeather obj with all the Weather info from the api
  * @returns a canvas to display on the site
  */

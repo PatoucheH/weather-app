@@ -83,6 +83,10 @@ header {
 
 .container-weather {
   margin: 50px auto;
+  .div-img {
+    width: 200px;
+    height: 100px;
+  }
 }
 
 .weather-div {
@@ -114,8 +118,12 @@ header {
     padding: 25px;
     border: 3px solid $primary-color;
     background: $second-color;
-  }
 
+    p {
+      margin-top: 10px;
+      white-space: pre;
+    }
+  }
   .delete-btn {
     width: 25px;
     height: 25px;
@@ -130,6 +138,25 @@ header {
     height: 50px;
   }
 }
+
+.container-day {
+  .weather {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 100px repeat(2, 1fr);
+  }
+  h3 {
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+  }
+  p {
+    grid-row: 2 / -1;
+  }
+}
+
 // Responsive
 
 @media screen and (min-width: 550px) {
